@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:yejing/cubits/locale/locale_cubit.dart';
+import 'package:yejing/cubits/locale/locale_state.dart';
+import 'package:yejing/l10n/app_localizations.dart';
+import 'package:yejing/presentation/interfaces/main_interface.dart';
 
-void main() {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory(
+      (await getApplicationDocumentsDirectory()).path,
+    ),
+  );
+
   runApp(const YeJingApp());
 }
 
@@ -15,7 +30,6 @@ class YeJingApp extends StatefulWidget {
 }
 
 class _YeJingAppState extends State<YeJingApp> {
-
   @override
   void initState() {
     super.initState();
@@ -29,10 +43,25 @@ class _YeJingAppState extends State<YeJingApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'YeJing',
-      debugShowCheckedModeBanner: false,
-      home: const Scaffold(),
+    return BlocProvider(
+      create: (_) => AppLocaleCubit(),
+      child: BlocBuilder<AppLocaleCubit, AppLocaleState>(
+        builder: (context, localeState) {
+          return MaterialApp(
+            title: 'YeJing',
+            debugShowCheckedModeBanner: false,
+            locale: localeState.language.locale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              ...AppLocalizations.localizationsDelegates,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: const MainInterface(),
+          );
+        },
+      ),
     );
   }
 }
