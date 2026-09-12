@@ -104,6 +104,18 @@ abstract class AppLocalizations {
   /// **'YeJing'**
   String get yejingTitle;
 
+  /// No description provided for @appVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 1.0.0'**
+  String get appVersion;
+
+  /// No description provided for @appDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'YeJing uses AI-powered image recognition to deliver instant plant disease diagnosis. Results are indicative only and not a substitute for professional agronomic advice.'**
+  String get appDisclaimer;
+
   /// No description provided for @plantDiseaseDiagnosis.
   ///
   /// In en, this message translates to:
@@ -127,6 +139,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get navSettings;
+
+  /// No description provided for @settingsLanguageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'LANGUAGE'**
+  String get settingsLanguageLabel;
+
+  /// No description provided for @settingsDataLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'DATA'**
+  String get settingsDataLabel;
+
+  /// No description provided for @settingsClearHistoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear History'**
+  String get settingsClearHistoryLabel;
+
+  /// No description provided for @settingsAboutLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'ABOUT'**
+  String get settingsAboutLabel;
 }
 
 class _AppLocalizationsDelegate

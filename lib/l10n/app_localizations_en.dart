@@ -13,6 +13,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yejingTitle => 'YeJing';
 
   @override
+  String get appVersion => 'Version 1.0.0';
+
+  @override
+  String get appDisclaimer =>
+      'YeJing uses AI-powered image recognition to deliver instant plant disease diagnosis. Results are indicative only and not a substitute for professional agronomic advice.';
+
+  @override
   String get plantDiseaseDiagnosis => 'Plant Disease Diagnosis';
 
   @override
@@ -23,4 +30,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navSettings => 'Settings';
+
+  @override
+  String get settingsLanguageLabel => 'LANGUAGE';
+
+  @override
+  String get settingsDataLabel => 'DATA';
+
+  @override
+  String get settingsClearHistoryLabel => 'Clear History';
+
+  @override
+  String get settingsAboutLabel => 'ABOUT';
 }

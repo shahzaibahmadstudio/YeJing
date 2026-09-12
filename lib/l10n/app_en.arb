@@ -1,8 +1,14 @@
 {
   "@@locale": "en",
   "yejingTitle": "YeJing",
+  "appVersion": "Version 1.0.0",
+  "appDisclaimer": "YeJing uses AI-powered image recognition to deliver instant plant disease diagnosis. Results are indicative only and not a substitute for professional agronomic advice.",
   "plantDiseaseDiagnosis": "Plant Disease Diagnosis",
   "navScan": "Scan",
   "navHistory": "History",
-  "navSettings": "Settings"
+  "navSettings": "Settings",
+  "settingsLanguageLabel": "LANGUAGE",
+  "settingsDataLabel": "DATA",
+  "settingsClearHistoryLabel": "Clear History",
+  "settingsAboutLabel": "ABOUT"
 }

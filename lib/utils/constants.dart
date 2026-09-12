@@ -85,7 +85,7 @@ class YeJingIcons {
 
   // Others
   static const String camera = "assets/icons/camera.svg";
-  static const String delete = "assets/icons/arrow_back.svg";
+  static const String delete = "assets/icons/delete.svg";
   static const String search = "assets/icons/search.svg";
 }
 

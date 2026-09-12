@@ -21,6 +21,15 @@ extension AppLanguageX on AppLanguage {
         return 'ENG';
     }
   }
+
+  String get displayName {
+    switch (this) {
+      case AppLanguage.en:
+        return 'English';
+      case AppLanguage.zh:
+        return '中文';
+    }
+  }
 }
 
 class AppLocaleState extends Equatable {

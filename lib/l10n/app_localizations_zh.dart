@@ -13,6 +13,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get yejingTitle => 'YeJing';
 
   @override
+  String get appVersion => '版本 1.0.0';
+
+  @override
+  String get appDisclaimer =>
+      'YeJing 利用人工智能图像识别技术，提供植物病害的即时诊断。诊断结果仅供参考，不能替代专业的农艺建议。';
+
+  @override
   String get plantDiseaseDiagnosis => '植物病害诊断';
 
   @override
@@ -23,4 +30,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get navSettings => '设置';
+
+  @override
+  String get settingsLanguageLabel => '语言';
+
+  @override
+  String get settingsDataLabel => '数据';
+
+  @override
+  String get settingsClearHistoryLabel => '清除历史记录';
+
+  @override
+  String get settingsAboutLabel => '关于';
 }

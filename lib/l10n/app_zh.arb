@@ -1,8 +1,14 @@
 {
   "@@locale": "zh",
   "yejingTitle": "YeJing",
+  "appVersion": "版本 1.0.0",
+  "appDisclaimer": "YeJing 利用人工智能图像识别技术，提供植物病害的即时诊断。诊断结果仅供参考，不能替代专业的农艺建议。",
   "plantDiseaseDiagnosis": "植物病害诊断",
   "navScan": "扫描",
   "navHistory": "历史",
-  "navSettings": "设置"
+  "navSettings": "设置",
+  "settingsLanguageLabel": "语言",
+  "settingsDataLabel": "数据",
+  "settingsClearHistoryLabel": "清除历史记录",
+  "settingsAboutLabel": "关于"
 }
