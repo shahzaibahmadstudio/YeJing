@@ -8,11 +8,15 @@ import 'package:yejing/cubits/locale/locale_cubit.dart';
 import 'package:yejing/cubits/locale/locale_state.dart';
 import 'package:yejing/l10n/app_localizations.dart';
 import 'package:yejing/presentation/interfaces/main_interface.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: HydratedStorageDirectory(
       (await getApplicationDocumentsDirectory()).path,
