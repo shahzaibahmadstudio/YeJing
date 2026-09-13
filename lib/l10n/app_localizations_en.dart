@@ -105,4 +105,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get historyNoResults => 'No matching scans.';
+
+  @override
+  String get historyClearedMessage => 'History cleared.';
 }

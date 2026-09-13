@@ -28,5 +28,6 @@
   "historySearchHint": "Search",
   "historyEmptyTitle": "Scan a plant to get started.",
   "historyEmptySubtitle": "No scans yet.",
-  "historyNoResults": "No matching scans."
+  "historyNoResults": "No matching scans.",
+  "historyClearedMessage": "History cleared."
 }

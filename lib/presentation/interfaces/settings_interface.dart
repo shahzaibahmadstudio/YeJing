@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yejing/cubits/history/history_cubit.dart';
 import 'package:yejing/cubits/locale/locale_cubit.dart';
 import 'package:yejing/cubits/locale/locale_state.dart';
 import 'package:yejing/l10n/l10n_extension.dart';
@@ -146,7 +147,17 @@ class _DataSection extends StatelessWidget {
         ),
         SizedBox(height: context.s(16)),
         GestureDetector(
-          onTap: () {},
+          onTap: () async {
+            await context.read<HistoryCubit>().clearAllScans();
+            if (!context.mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(context.l10n.historyClearedMessage),
+                duration: const Duration(seconds: 2),
+                backgroundColor: YeJingColors.primaryRed,
+              ),
+            );
+          },
           child: Container(
             height: context.s(48),
             decoration: BoxDecoration(

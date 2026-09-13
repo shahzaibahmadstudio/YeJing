@@ -271,6 +271,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No matching scans.'**
   String get historyNoResults;
+
+  /// No description provided for @historyClearedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'History cleared.'**
+  String get historyClearedMessage;
 }
 
 class _AppLocalizationsDelegate

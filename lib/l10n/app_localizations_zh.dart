@@ -103,4 +103,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get historyNoResults => '未找到匹配的记录。';
+
+  @override
+  String get historyClearedMessage => '历史记录已清除。';
 }

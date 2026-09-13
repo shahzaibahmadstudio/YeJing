@@ -13,6 +13,11 @@ class HistoryCubit extends Cubit<HistoryState> {
     _applyFilters();
   }
 
+  Future<void> clearAllScans() async {
+    await HiveService.clearAllScans();
+    await loadAllScans();
+  }
+
   void filterByDateRange(DateTime start, DateTime end) {
     emit(state.copyWith(startDate: start, endDate: end));
     _applyFilters();
