@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:yejing/utils/constants.dart';
 import 'package:yejing/services/storage/hive_service.dart';
 import 'package:yejing/cubits/locale/locale_cubit.dart';
 import 'package:yejing/cubits/locale/locale_state.dart';
@@ -57,6 +58,25 @@ class _YeJingAppState extends State<YeJingApp> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData baseTheme = ThemeData.light();
+    final TextTheme baseTextTheme = baseTheme.textTheme.copyWith(
+      labelMedium: YeJingTextStyles.n12.copyWith(
+        color: Colors.grey,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyLarge: YeJingTextStyles.n16.copyWith(
+        color: YeJingColors.pureBlack,
+        fontWeight: FontWeight.w700,
+      ),
+      titleSmall: YeJingTextStyles.n14.copyWith(
+        color: YeJingColors.pureBlack,
+        fontWeight: FontWeight.w700,
+      ),
+      headlineMedium: YeJingTextStyles.n24.copyWith(
+        color: YeJingColors.pureBlack,
+        fontWeight: FontWeight.w900,
+      ),
+    );
     return BlocProvider(
       create: (_) => AppLocaleCubit(),
       child: BlocBuilder<AppLocaleCubit, AppLocaleState>(
@@ -72,6 +92,43 @@ class _YeJingAppState extends State<YeJingApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
+            theme: ThemeData(
+              textTheme: baseTextTheme,
+              colorScheme: ColorScheme.light(
+                primary: YeJingColors.primaryRed,
+                onPrimary: YeJingColors.pureWhite,
+                surface: YeJingColors.pureWhite,
+                onSurface: YeJingColors.pureBlack,
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  foregroundColor: YeJingColors.primaryRed,
+                ),
+              ),
+              datePickerTheme: DatePickerThemeData(
+                rangeSelectionBackgroundColor: YeJingColors.primaryRed
+                    .withAlpha(64),
+                headerBackgroundColor: YeJingColors.pureWhite,
+                headerForegroundColor: YeJingColors.pureBlack,
+
+                headerHeadlineStyle: YeJingTextStyles.n24.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: YeJingColors.pureBlack,
+                ),
+                headerHelpStyle: YeJingTextStyles.n12.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: YeJingColors.pureBlackWithAlpha36,
+                ),
+                weekdayStyle: YeJingTextStyles.n14.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: YeJingColors.pureBlack,
+                ),
+                dayStyle: YeJingTextStyles.n16.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: YeJingColors.pureBlack,
+                ),
+              ),
+            ),
             home: const MainInterface(),
           );
         },

@@ -9,7 +9,7 @@ extension DiseaseLabelX on DiseaseLabel {
       case DiseaseLabel.mild:
         return YeJingColors.accentMustard;
       case DiseaseLabel.moderate:
-        return YeJingColors.secondaryYellow;
+        return YeJingColors.accentOrange;
       case DiseaseLabel.severe:
         return YeJingColors.primaryRed;
       case DiseaseLabel.healthy:

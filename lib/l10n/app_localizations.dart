@@ -163,6 +163,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ABOUT'**
   String get settingsAboutLabel;
+
+  /// No description provided for @scanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a Plant'**
+  String get scanTitle;
+
+  /// No description provided for @scanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to upload an image of a leaf.'**
+  String get scanSubtitle;
+
+  /// No description provided for @scanFileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'JPEG or PNG - Max 5MB'**
+  String get scanFileHint;
+
+  /// No description provided for @scanAnalyzeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyze Plant'**
+  String get scanAnalyzeButton;
+
+  /// No description provided for @scanAnalyzingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyzing...'**
+  String get scanAnalyzingLabel;
+
+  /// No description provided for @scanTakePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Photo'**
+  String get scanTakePhoto;
+
+  /// No description provided for @scanChooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from Gallery'**
+  String get scanChooseFromGallery;
+
+  /// No description provided for @scanDiagnosisResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagnosis Result'**
+  String get scanDiagnosisResultTitle;
+
+  /// No description provided for @scanDiseaseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'DISEASE'**
+  String get scanDiseaseLabel;
+
+  /// No description provided for @scanTreatmentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'TREATMENT'**
+  String get scanTreatmentLabel;
+
+  /// No description provided for @scanErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong.'**
+  String get scanErrorTitle;
+
+  /// No description provided for @scanRetryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get scanRetryButton;
+
+  /// No description provided for @historyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan History'**
+  String get historyTitle;
+
+  /// No description provided for @historyRecordsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 records} =1{1 record} other{{count} records}}'**
+  String historyRecordsCount(num count);
+
+  /// No description provided for @historySearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get historySearchHint;
+
+  /// No description provided for @historyEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a plant to get started.'**
+  String get historyEmptyTitle;
+
+  /// No description provided for @historyEmptySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No scans yet.'**
+  String get historyEmptySubtitle;
+
+  /// No description provided for @historyNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching scans.'**
+  String get historyNoResults;
 }
 
 class _AppLocalizationsDelegate

@@ -42,4 +42,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsAboutLabel => 'ABOUT';
+
+  @override
+  String get scanTitle => 'Scan a Plant';
+
+  @override
+  String get scanSubtitle => 'Tap to upload an image of a leaf.';
+
+  @override
+  String get scanFileHint => 'JPEG or PNG - Max 5MB';
+
+  @override
+  String get scanAnalyzeButton => 'Analyze Plant';
+
+  @override
+  String get scanAnalyzingLabel => 'Analyzing...';
+
+  @override
+  String get scanTakePhoto => 'Take Photo';
+
+  @override
+  String get scanChooseFromGallery => 'Choose from Gallery';
+
+  @override
+  String get scanDiagnosisResultTitle => 'Diagnosis Result';
+
+  @override
+  String get scanDiseaseLabel => 'DISEASE';
+
+  @override
+  String get scanTreatmentLabel => 'TREATMENT';
+
+  @override
+  String get scanErrorTitle => 'Something went wrong.';
+
+  @override
+  String get scanRetryButton => 'Try Again';
+
+  @override
+  String get historyTitle => 'Scan History';
+
+  @override
+  String historyRecordsCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count records',
+      one: '1 record',
+      zero: '0 records',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get historySearchHint => 'Search';
+
+  @override
+  String get historyEmptyTitle => 'Scan a plant to get started.';
+
+  @override
+  String get historyEmptySubtitle => 'No scans yet.';
+
+  @override
+  String get historyNoResults => 'No matching scans.';
 }
