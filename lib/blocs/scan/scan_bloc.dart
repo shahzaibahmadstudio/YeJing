@@ -7,13 +7,16 @@ import 'package:yejing/blocs/scan/scan_event.dart';
 import 'package:yejing/blocs/scan/scan_state.dart';
 import 'package:yejing/models/disease_label.dart';
 import 'package:yejing/models/scan_result.dart';
+import 'package:yejing/services/firebase/firebase_ai_service.dart';
 import 'package:yejing/services/storage/hive_service.dart';
 
 class ScanBloc extends Bloc<ScanEvent, ScanState> {
   final ImagePicker _imagePicker;
+  final FirebaseAIService _firebaseAIService;
 
-  ScanBloc({ImagePicker? imagePicker})
+  ScanBloc({ImagePicker? imagePicker, FirebaseAIService? firebaseAIService})
     : _imagePicker = imagePicker ?? ImagePicker(),
+      _firebaseAIService = firebaseAIService ?? FirebaseAIService(),
       super(const ScanInitialState()) {
     on<ScanImagePickedEvent>(_onImagePicked);
     on<ScanProcessEvent>(_onProcess);
@@ -66,16 +69,27 @@ class ScanBloc extends Bloc<ScanEvent, ScanState> {
   }
 
   Future<ScanResult> _analyzeImage(File imageFile) async {
-    await Future.delayed(const Duration(seconds: 2));
+    try {
+      final Map<String, dynamic> aiResponse = await _firebaseAIService
+          .analyzePlantImage(imageFile);
+      final String severityStr = (aiResponse['severity'] as String)
+          .toLowerCase();
+      final DiseaseLabel severity = DiseaseLabel.values.firstWhere(
+        (label) => label.name == severityStr,
+        orElse: () => DiseaseLabel.mild,
+      );
 
-    return ScanResult(
-      id: const Uuid().v4(),
-      imagePath: imageFile.path,
-      title: 'Sample Diagnosis',
-      date: DateTime.now(),
-      severity: DiseaseLabel.mild,
-      description: 'Placeholder description until Firebase AI is wired in.',
-      treatment: 'Placeholder treatment until Firebase AI is wired in.',
-    );
+      return ScanResult(
+        id: const Uuid().v4(),
+        imagePath: imageFile.path,
+        title: aiResponse['disease_name'] as String? ?? 'Unknown',
+        date: DateTime.now(),
+        severity: severity,
+        description: aiResponse['description'] as String? ?? '',
+        treatment: aiResponse['treatment'] as String? ?? '',
+      );
+    } catch (e) {
+      throw Exception('Failed to analyze image: $e');
+    }
   }
 }
