@@ -108,4 +108,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get historyClearedMessage => 'History cleared.';
+
+  @override
+  String get connectivityNoInternet => 'No Internet Connection';
 }

@@ -277,6 +277,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'History cleared.'**
   String get historyClearedMessage;
+
+  /// No description provided for @connectivityNoInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet Connection'**
+  String get connectivityNoInternet;
 }
 
 class _AppLocalizationsDelegate

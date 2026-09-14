@@ -51,6 +51,8 @@ dependencies:
   hive_flutter: ^1.1.0
   uuid: ^4.6.0
   image_picker: ^1.2.3
+  internet_connection_checker: ^3.0.1
+  mime: ^2.1.0
 
 dev_dependencies:
   flutter_test:

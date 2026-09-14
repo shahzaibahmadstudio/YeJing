@@ -29,5 +29,6 @@
   "historyEmptyTitle": "扫描植物以开始使用。",
   "historyEmptySubtitle": "暂无扫描记录。",
   "historyNoResults": "未找到匹配的记录。",
-  "historyClearedMessage": "历史记录已清除。"
+  "historyClearedMessage": "历史记录已清除。",
+  "connectivityNoInternet": "无网络连接"
 }

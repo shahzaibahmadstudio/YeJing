@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:yejing/cubits/connectivity/connectivity_cubit.dart';
+import 'package:yejing/cubits/connectivity/connectivity_state.dart';
 import 'package:yejing/utils/constants.dart';
 import 'package:yejing/services/storage/hive_service.dart';
 import 'package:yejing/cubits/locale/locale_cubit.dart';
@@ -15,6 +17,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
 import 'firebase_options.dart';
+
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -77,12 +82,16 @@ class _YeJingAppState extends State<YeJingApp> {
         fontWeight: FontWeight.w900,
       ),
     );
-    return BlocProvider(
-      create: (_) => AppLocaleCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => AppLocaleCubit()),
+        BlocProvider(create: (_) => ConnectivityCubit()),
+      ],
       child: BlocBuilder<AppLocaleCubit, AppLocaleState>(
         builder: (context, localeState) {
           return MaterialApp(
             title: 'YeJing',
+            scaffoldMessengerKey: scaffoldMessengerKey,
             debugShowCheckedModeBanner: false,
             locale: localeState.language.locale,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -129,7 +138,40 @@ class _YeJingAppState extends State<YeJingApp> {
                 ),
               ),
             ),
-            home: const MainInterface(),
+            home: Builder(
+              builder: (innerContext) {
+                return BlocListener<ConnectivityCubit, ConnectivityState>(
+                  listener: (context, connectivityState) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (!innerContext.mounted) return;
+                      if (connectivityState is DisconnectedState) {
+                        scaffoldMessengerKey.currentState?.showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              AppLocalizations.of(innerContext)
+                                  .connectivityNoInternet,
+                              textAlign: TextAlign.center,
+                              style: YeJingTextStyles.n14.copyWith(
+                                fontSize: innerContext.sp(14),
+                                fontWeight: FontWeight.w700,
+                                color: YeJingColors.pureWhite,
+                              ),
+                            ),
+                            backgroundColor: YeJingColors.primaryRed,
+                            duration: const Duration(days: 365),
+                            behavior: SnackBarBehavior.fixed,
+                          ),
+                        );
+                      } else if (connectivityState is ConnectedState) {
+                        scaffoldMessengerKey.currentState
+                            ?.hideCurrentSnackBar();
+                      }
+                    });
+                  },
+                  child: const MainInterface(),
+                );
+              },
+            ),
           );
         },
       ),

@@ -106,4 +106,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get historyClearedMessage => '历史记录已清除。';
+
+  @override
+  String get connectivityNoInternet => '无网络连接';
 }

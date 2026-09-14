@@ -152,7 +152,15 @@ class _DataSection extends StatelessWidget {
             if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(context.l10n.historyClearedMessage),
+                content: Text(
+                  context.l10n.historyClearedMessage,
+                  textAlign: TextAlign.center,
+                  style: YeJingTextStyles.n14.copyWith(
+                    fontSize: context.sp(14),
+                    fontWeight: FontWeight.w900,
+                    color: YeJingColors.pureWhite,
+                  ),
+                ),
                 duration: const Duration(seconds: 2),
                 backgroundColor: YeJingColors.primaryRed,
               ),
